@@ -1,3 +1,6 @@
 [submodule "externals/glm"]
 	path = externals/glm
 	url = https://github.com/cosmoscout/glm.git
+[submodule "externals/doctest"]
+    path = externals/doctest
+    url = https://github.com/onqtam/doctest.git

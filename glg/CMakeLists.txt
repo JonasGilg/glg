@@ -1,8 +1,8 @@
 file(GLOB ROOT_INLINE *.inl)
 file(GLOB ROOT_HEADER *.hpp)
 
-file(GLOB_RECURSE CORE_INLINE ./detail/*.inl)
-file(GLOB_RECURSE CORE_HEADER ./detail/*.hpp)
+file(GLOB_RECURSE CORE_INLINE ./*/*.inl)
+file(GLOB_RECURSE CORE_HEADER ./*/*.hpp)
 
 source_group("Core Files" FILES ${CORE_INLINE})
 source_group("Core Files" FILES ${CORE_HEADER})
