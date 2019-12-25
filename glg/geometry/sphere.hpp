@@ -4,7 +4,7 @@
 #include "nsphere.hpp"
 
 namespace glg {
-    template <typename T>
+    template<typename T>
     using tsphere = nsphere<3, T>;
 
     using sphere = tsphere<float>;
