@@ -37,7 +37,7 @@ rem The build directory.
 set BUILD_DIR=%CURRENT_DIR%\build\windows-externals-%BUILD_TYPE%
 
 rem The install directory.
-set INSTALL_DIR=%CURRENT_DIR%\install\windows-externals-%BUILD_TYPE%
+set INSTALL_DIR=%CURRENT_DIR%\install\windows-%BUILD_TYPE%
 
 rem Create some default installation directories.
 cmake -E make_directory "%INSTALL_DIR%/include"

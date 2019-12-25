@@ -40,20 +40,14 @@ set BUILD_DIR=%CURRENT_DIR%\build\windows-%BUILD_TYPE%
 rem The install directory.
 set INSTALL_DIR=%CURRENT_DIR%\install\windows-%BUILD_TYPE%
 
-rem This directory should be used as the install directory for make_externals.bat.
-set EXTERNALS_INSTALL_DIR=%CURRENT_DIR%\install\windows-externals-%BUILD_TYPE%
-
 rem create build directory if necessary -----------------------------------------------------------
-
 if exist "%BUILD_DIR%" goto BUILD_DIR_CREATED
     mkdir "%BUILD_DIR%"
 :BUILD_DIR_CREATED
 
 rem configure, compile & install -------------------------------------------------------------------
-
 cd "%BUILD_DIR%"
-cmake %CMAKE_FLAGS% -DCMAKE_INSTALL_PREFIX="%INSTALL_DIR%"^
-      -DGLG_EXTERNALS_DIR="%EXTERNALS_INSTALL_DIR%" "%CMAKE_DIR%"  || exit /b
+cmake %CMAKE_FLAGS% -DCMAKE_INSTALL_PREFIX="%INSTALL_DIR%" "%CMAKE_DIR%"  || exit /b
 
 cmake --build . --config %BUILD_TYPE% --target install --parallel 8  || exit /b
 
