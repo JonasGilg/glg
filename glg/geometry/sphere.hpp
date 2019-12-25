@@ -1,5 +1,5 @@
-#ifndef GLG_SPHERE_HPP
-#define GLG_SPHERE_HPP
+#ifndef GLG_GEOMETRY_SPHERE_HPP
+#define GLG_GEOMETRY_SPHERE_HPP
 
 #include "nsphere.hpp"
 
@@ -11,4 +11,4 @@ namespace glg {
     using dsphere = tsphere<double>;
 }
 
-#endif //GLG_SPHERE_HPP
+#endif // GLG_GEOMETRY_SPHERE_HPP

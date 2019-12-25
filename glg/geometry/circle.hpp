@@ -1,5 +1,5 @@
-#ifndef GLG_CIRCLE_HPP
-#define GLG_CIRCLE_HPP
+#ifndef GLG_GEOMETRY_CIRCLE_HPP
+#define GLG_GEOMETRY_CIRCLE_HPP
 
 #include "nsphere.hpp"
 
@@ -11,4 +11,4 @@ namespace glg {
     using dcircle = tcircle<double>;
 }
 
-#endif //GLG_CIRCLE_HPP
+#endif // GLG_GEOMETRY_CIRCLE_HPP

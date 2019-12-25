@@ -1,5 +1,5 @@
-#ifndef GLG_NSPHERE_HPP
-#define GLG_NSPHERE_HPP
+#ifndef GLG_GEOMETRY_NSPHERE_HPP
+#define GLG_GEOMETRY_NSPHERE_HPP
 
 #include <glm/glm.hpp>
 
@@ -19,4 +19,4 @@ namespace glg {
     };
 }
 
-#endif //GLG_NSPHERE_HPP
+#endif // GLG_GEOMETRY_NSPHERE_HPP
