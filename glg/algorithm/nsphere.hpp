@@ -10,45 +10,75 @@
 
 namespace glg {
     /// The length of the longest arc surrounding the n-sphere.
-    template<int Size, typename T>
-    T circumference(nsphere<Size, T> const& ns) {
+    template<int L, typename T>
+    T circumference(glg::nsphere<L, T> const &ns) {
         return ns.radius * glm::two_pi<T>();
     }
 
     /// The area enclosed by the circle.
     template<typename T>
-    T area(tcircle<T> const& c) {
+    T area(glg::tcircle<T> const &c) {
         return glm::pi<T>() * c.radius * c.radius;
     }
 
     /// The surface area of the sphere.
     template<typename T>
-    T area(tsphere<T> const& s) {
+    T area(glg::tsphere<T> const &s) {
         return static_cast<T>(4.0) * glm::pi<T>() * s.radius * s.radius;
     }
 
     /// The volume enclosed by the sphere.
     template<typename T>
-    T volume(tsphere<T> const& s) {
+    T volume(glg::tsphere<T> const &s) {
         return static_cast<T>(4.0 / 3.0) * glm::pi<T>() * s.radius * s.radius * s.radius;
     }
 
     /// The distance from the n-sphere center to the given position.
-    template<int Size, typename T>
-    T centerDistance(nsphere<Size, T> const& ns, glm::vec<Size, T> const& pos) {
+    template<int L, typename T>
+    T centerDistance(glg::nsphere<L, T> const &ns, glm::vec<L, T> const &pos) {
         return glm::length(ns.center, pos);
     }
 
     /// The shortest distance between the surface of the n-sphere and the given position.
-    template<int Size, typename T>
-    T surfaceDistance(nsphere<Size, T> const& ns, glm::vec<Size, T> const& pos) {
+    template<int L, typename T>
+    T surfaceDistance(glg::nsphere<L, T> const &ns, glm::vec<L, T> const &pos) {
         return glm::length(ns.center, pos) - ns.radius;
     }
 
-    /// The angular size of the n-sphere as seen from the given position.
-    template<int Size, typename T>
-    T angularRadius(nsphere<Size, T> const& ns, glm::vec<Size, T> const& pos) {
-        return static_cast<T>(2.0) * glm::asin(ns.radius / centerDistance(ns, pos));
+    /// The angular L of the n-sphere as seen from the given position.
+    template<int L, typename T>
+    T angularRadius(glg::nsphere<L, T> const &ns, glm::vec<L, T> const &pos) {
+        return static_cast<T>(2.0) * glm::asin(ns.radius / glg::centerDistance(ns, pos));
+    }
+
+    /// Distance between two n-sphere centers.
+    template<int L, typename T>
+    T centerDistance(glg::nsphere<L, T> const &ns1, glg::nsphere<L, T> const &ns2) {
+        return glm::length(ns1.center, ns2.center);
+    }
+
+    /// Distance between two n-sphere surfaces.
+    template<int L, typename T>
+    T surfaceDistance(glg::nsphere<L, T> const &ns1, glg::nsphere<L, T> const &ns2) {
+        return glm::length(ns1.center, ns2.center) - ns1.radius - ns2.radius;
+    }
+
+    /// True if the given n-spheres intersect.
+    template<int L, typename T>
+    bool isIntersecting(glg::nsphere<L, T> const &ns1, glg::nsphere<L, T> const &ns2) {
+        return glg::centerDistance(ns1, ns2) <= ns1.radius + ns2.radius;
+    }
+
+    /// True if the given position is inside the n-sphere.
+    template<int L, typename T>
+    bool contains(glg::nsphere<L, T> const& ns, glm::vec<L, T> const& pos) {
+        return glm::length(ns.center, pos) < ns.radius;
+    }
+
+    /// True if the second n-sphere is completely inside the first n-sphere.
+    template<int L, typename T>
+    bool contains(glg::nsphere<L, T> const& ns1, glg::nsphere<L, T> const& ns2) {
+        return glm::length(ns1.center, ns2.center) + ns2.radius < ns1.radius;
     }
 }
 
